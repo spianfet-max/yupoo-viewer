@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: yupoo-viewer
+    env: node
+    region: singapore        # closest to Japan / Asia sellers
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+    # Keep-alive: Render free tier sleeps after 15 min of inactivity.
+    # Add a cron ping if you want it always-on (upgrade to paid or use UptimeRobot).
+    healthCheckPath: /health
